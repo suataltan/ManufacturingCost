@@ -286,43 +286,7 @@ namespace UretimMaliyeti
         //----------------------------------------------------------------------------------------------------------------------------------
         private void button1_Click(object sender, EventArgs e)
         {
-            List<int> ID = new List<int>();
-            List<float> Miktar = new List<float>();
-            List<float> Fiyat = new List<float>();
-            sayac = 0;
-            textBox3.Clear();
-            int i = Convert.ToInt32(textBox1.Text);
-            int j = Convert.ToInt32(textBox2.Text);
 
-            //var ri = db.depo.Where(x => x.urunID == i).Where(y => y.derece == 0).Select(x => new { x.receteID }).ToArray();
-            //foreach (var item in ri)
-            //{
-            //    r1[0] = Convert.ToInt32(item.receteID);
-            //}
-
-
-            var son = Recete_Topla(i, j);
-            foreach (var item in son.Item1)
-            {
-                ID.Add(item);
-            }
-            foreach (var item in son.Item2)
-            {
-                Miktar.Add(item);
-            }
-            foreach (var item in son.Item3)
-            {
-                Fiyat.Add(item);
-            }
-            float toplamFiyat = son.Item4;
-
-            for (int k = 0; k < ID.Count(); k++)
-            {
-                textBox3.Text += "ID = " + ID[k] + "        Miktar = " + Miktar[k] + "       Fiyat = " + Fiyat[k];
-                textBox3.Text += "\r\n";
-            }
-            textBox3.Text += "\r\n";
-            textBox3.Text += "Toplam Fiyat: " + toplamFiyat;
         }
 
 
@@ -414,6 +378,8 @@ namespace UretimMaliyeti
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -459,9 +425,29 @@ namespace UretimMaliyeti
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(323, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Ürün ID:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(322, 168);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Miktar:";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1117, 504);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox3);
@@ -478,6 +464,8 @@ namespace UretimMaliyeti
         private TextBox textBox3;
         private Button button1;
         private Button button2;
+        private Label label1;
+        private Label label2;
     }
 }
 
